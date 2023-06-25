@@ -10,9 +10,8 @@ from app.data import Database
 from app.graph import chart
 from app.machine import Machine
 
-SPRINT = 0
+SPRINT = 1
 APP = Flask(__name__)
-
 
 @APP.route("/")
 def home():
@@ -23,12 +22,12 @@ def home():
         password=b64decode(b"VGFuZ2VyaW5lIERyZWFt"),
     )
 
-
 @APP.route("/data")
 def data():
     if SPRINT < 1:
         return render_template("data.html")
     db = Database()
+    db.dataframe()
     return render_template(
         "data.html",
         count=db.count(),
@@ -96,5 +95,5 @@ def model():
     )
 
 
-if __name__ == '__main__':
-    APP.run()
+#if __name__ == '__main__':
+APP.run(debug=True)
