@@ -91,6 +91,6 @@ class Database:
 
 if __name__ == '__main__':
     db = Database()
-    db.reset()
+    #db.reset()
     db.seed(2048)
     #db.dataframe()
